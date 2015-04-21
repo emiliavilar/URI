@@ -1,0 +1,50 @@
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+public class Main {
+ 
+    public static void main(String aa[]) {
+        Scanner teclado = new Scanner(System.in);
+ 
+        while (true) {
+            String dado = teclado.nextLine();
+            String[] dados = dado.split(" ");
+            int N = Integer.parseInt(dados[0]);
+            int K = Integer.parseInt(dados[1]);
+            if( N == 0 && K == 0){
+                break;
+            }
+            String dadoLinha2 = teclado.nextLine();
+            String[] dadosLinha2 = dadoLinha2.split(" ");
+ 
+            int[] dadosInt = new int[N];
+ 
+            for(int i=0; i<N; i++){
+                dadosInt[i] = Integer.parseInt(dadosLinha2[i]);
+            }
+ 
+            Arrays.sort(dadosInt);
+ 
+            int nAux = dadosInt[N-1];     
+ 
+            int[] arrayAux = new int[nAux + 1];
+             
+            int contador = 0;
+ 
+            for(int i=0; i<dadosInt.length; i++){
+                arrayAux[dadosInt[i]] += 1;
+            }
+             
+            for(int i=0; i< arrayAux.length; i++){
+                if(arrayAux[i] != 0 && arrayAux[i] >= K){
+                    contador++;
+                }
+            }
+             
+            System.out.println(contador);
+        }  
+         
+        teclado.close();
+    }
+ 
+}
